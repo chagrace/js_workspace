@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let sel_yy;
+        let sel_mm;
+        let sel_ss;
+
+        function Date(first, last, sel){
+            sel_yy = document.getElementById("sel_yy");
+            sel_mm = document.getElementById("sel_mm");
+            sel_ss = document.getElementById("sel_ss");
+
+            for(let i = first; i<=last; i++){
+                let op = document.createElement("option");
+                op.text = i;
+                sel.add(op);
+            }
+        }
+        function init(){
+            
+        Date(1945, 2024, "sel_yy");
+        Date(1, 12, "sel_dd");
+        Date(1, 31, "sel_ss");
+        
+
+            
+        }
+    </script>
+</head>
+<body onLoad="init()">
+    <select id="sel_yy"></select>년
+    <select id="sel_mm"></select>월
+    <select id="sel_ss"></select>일
+
+</body>
+</html>

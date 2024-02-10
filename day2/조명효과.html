@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #wrapper{
+        width:700px;
+        height: 600px;
+        background-color: aqua;
+        margin: auto;
+    }
+    #aside{
+        width:100px;
+        height:600px;
+        background-color: burlywood;
+        float:left;
+    }
+    #content{
+        width:600px;
+        height: 600px;
+        /*배경~~*/
+        background-image: url(../images/room/room.webp);
+        background-size: 600px  600px; /* width, height*/
+        float:left;
+    }
+    #light{
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        opacity:0.8; /*0(투명)  ~ 1(불투명)*/
+    }
+</style>
+<script>
+    let flag = false;
+    //스위치 이미지를 뒤집어 가면서 on, off로 교체
+    function control(){
+        let bt = document.getElementById("bt");
+        flag = !flag;
+        let filename = (flag) ? "on.png" : "off.png"; 
+        bt.src="../images/room/" + filename;
+
+        let light = document.getElementById("light");
+        //불켜기:0 불끄기0.8
+        let op = (flag) ? 0 : 0.8
+        light.style.opacity= op;
+    }
+</script>
+<body>
+    <div id="wrapper">
+        <div id="aside">
+            <img src="../images/room/off.png" id="bt" onclick="control()">
+        </div>
+        <div id="content">
+            <div id="light"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper{
+            width: 800px;
+            height: 600px;
+            background-color: green;
+            margin:auto;
+        }
+    </style>
+    <script>
+        let n=0;
+        function setCount(){
+            let span = document.createElement("span"); //<span></span>과 동일
+            
+            //wrapper태그 안에 자식으로 넣기
+            n+=1;
+            span.innerText=(n%3==0)?"*":n; //<span>1</span>과 동일
+            let wrapper = document.getElementById("wrapper");
+            wrapper.appendChild(span); //자식으로 추가
+        }
+    </script>
+</head>
+<body>
+    <button onclick="setCount()">카운터 증가</button>
+    <div id="wrapper">
+        <!-- span 태그는 아무런 시각적 효과가 없는, 그냥 마크업만을 위한 태그이다. -->
+
+        <span></span>
+    </div>
+</body>
+</html>

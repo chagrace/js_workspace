@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #wrapper{
+        width: 1000px;
+        height: 900px;
+        margin:auto;
+        background-color: bisque;
+        position: relative;
+    }
+</style>
+<script>
+    let img;
+    let a=0.1; //목표지점에 다가갈 보폭의 비율(수치값이 커질수록 보폭이 커짐)
+    let targetX=500; //이미지가 도착할 목표지점의 x좌표
+    let targetY=700;
+    function createImg(){
+    
+        img = document.createElement("img");
+        img.src="../images/plain/plane.png";
+        img.style.width = 50 + "px";
+        img.style.position="absolute";
+        img.style.left= 0 + "px";
+        img.style.top= 0 + "px";
+
+
+        let wrapper = document.getElementById("wrapper");
+        wrapper.appendChild(img);
+    }
+    function move(x, y){
+        img.style.left = x+ "px"; 
+        img.style.top = y + "px";
+    }
+    function moveSoft(){
+        //내 위치 = 현내위치 + a*(목표-현내위치)
+        //parseInt로 감싸면 px가 사라짐
+        img.style.left = parseInt(img.style.left) + a*(targetX - parseInt(img.style.left)) + "px";
+        img.style.top = parseInt(img.style.top) + a*(targetX - parseInt(img.style.top)) + "px";
+    }
+
+    //지금까지 사용해왔던 html의 이벤트 핸들러를 js에서도 적용 가능
+    window.addEventListener("load", function(){
+        createImg();
+        setInterval("moveSoft()",10);
+    });
+</script>
+<body>
+    <div id="wrapper"></div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let pic; //이미지
+        let x=0;  
+        let flag = false; //setInterval이 바로 실행 되지 않기위한 변수
+        let direction = 1; // 기준점까지 왔을때 방향 변경 변수
+        function init(){
+            
+            pic = document.getElementById("pic");
+            pic.style.position="absolute";
+            pic.style.left=0+"px";
+            pic.style.top=150+"px";
+        }
+
+        //수동버튼의 이동 함수
+        function move(){
+            
+            x+=50*direction;
+            pic.style.left = x+"px";
+            
+            //400px만큼 가면 방향을 음수로 바꿈
+            if(x >= 400){
+                direction=-1;
+            }
+
+            //0px로 돌아오면 방향을 양수로 바꿈
+            if (x <= 0) {
+                direction = 1;
+            }
+            
+        }
+
+        //자동버튼의 이동 함수
+        function autoMove(){
+
+            //자동버튼을 누르면 flag가 false -> true로 바뀌면서 자동으로 움직임
+            if(flag){
+                x+=50*direction;
+                pic.style.left = x+"px";
+            
+            if(x >= 400){
+                direction=-1;
+            }
+
+            if (x <= 0) {
+                direction = 1;
+            }
+            }
+        }
+
+        addEventListener("load", function(){
+            init();
+
+    
+            setInterval("autoMove()", 10);
+            
+        });
+    </script>
+</head>
+<body>
+    <button onClick="move()">수동</button>
+    <button onClick="flag = true;">자동</button>
+    <img src="../images/coin/coin1.webp" id="pic">
+</body>
+</html>

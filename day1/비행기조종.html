@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper{
+            background-image: url(../images/plain/game_bg.jpg);
+            width: 1280px;
+            height: 640px;
+            margin:auto;
+            position: relative; /* 자식이 포지션을 정했으므로 부모도 포지션 명시 */
+        }
+        #plane{
+            width: 60px;
+            position:absolute; /* 부모를 기준으로 한 위치 */
+            left: 200px;
+            top: 150px;
+        }
+    </style>
+    <script>
+        let x = 200;
+        let y = 150;
+        function moveRight(){
+            x = x + 5;
+            let plane = document.getElementById("plane");
+            plane.style.left = x + "px";
+        }
+        function moveDown(){
+            y = y + 5;
+            let plane = document.getElementById("plane");
+            plane.style.top = y + "px";
+        }
+        function moveUp(){
+            y = y - 5;
+            let plane = document.getElementById("plane");
+            plane.style.top = y + "px";
+        }
+        function moveLeft(){
+            x = x - 5;
+            let plane = document.getElementById("plane");
+            plane.style.left = x + "px";
+        }
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <table>
+            <tr>
+                <td></td>
+                <td><button onclick="moveUP()">up</button></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><button onclick="moveLeft()">left</button></td>
+                <td><button onclick="moveDown()">down</button></td>
+                <td><button onclick="moveRight()">right</button></td>
+            </tr>
+        </table>
+        <img src="../images/plain/plane.png" id="plane">
+    </div>
+</body>
+</html>

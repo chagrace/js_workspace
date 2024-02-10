@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        let f = prompt("원하는 층 수 입력")
+
+        for(let i = f; i>=1; i--){
+            let tag = "<table border= \"1px\"> ";
+                tag = tag + "<tr>";
+                    for(let j = 1; j<=30; j++){
+        tag = tag + "<td>" + i + "0" + j +"호</td>";
+                    }
+        tag = tag + "</tr>";
+        tag = tag + "</table>";
+        
+        document.write(tag);
+            
+        }
+    </script>
+</head>
+<body>
+    <!-- <table width = "400px" border="1">
+        <tr>
+            <td>301</td>
+            <td>302</td>
+        </tr>
+        <tr>
+            <td>201</td>
+            <td>202</td>
+        </tr>
+        <tr>
+            <td>101</td>
+            <td>102</td>
+        </tr>
+    </table> -->
+</body>
+</html>

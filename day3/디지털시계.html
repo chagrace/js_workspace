@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper{
+            width : 600px;
+            height: 300px;
+            background-color: rgb(238, 255, 0);
+            margin:auto;
+            border-radius:3%;
+        }
+        #content{
+            font-size: 40px;
+            text-align: center;
+            height: 200px;
+            background-color: green;
+        }
+        .box{
+            width: 130px;
+            height: 130px;
+            font-size:50px;
+            text-align: right;
+        }
+        #footer{
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+        }
+        #footer button{
+            width: 100px;
+            height: 50px;
+        }
+    </style>
+    <script>
+
+        let hh;
+        let mm;
+        let ss;
+
+        let sec = 0;
+        let min = 0;
+        let hr = 0;
+        
+        let flag=false; //시계의 작동을 결정짓는 논리값
+        function setCount(){
+
+            if(flag){
+            sec++;
+            ss.value = sec;
+
+            if(sec>59){
+                min++;
+                mm.value = min;
+                sec = 0;
+            }
+            if(min>59){
+                hr++;
+                hh.value=hr;
+                min = 0;
+            }
+        }
+        }
+        function init(){
+            hh = document.getElementById("hh");
+            mm = document.getElementById("mm");
+            ss = document.getElementById("ss");
+            hh.value=0;
+            mm.value=0;
+            ss.value=0;
+
+            setInterval("setCount()",1000);
+        }
+    </script>
+</head>
+<body onLoad="init()">
+    <div id="wrapper">
+        <div id="content">
+            <input type="text" class="box" id="hh">시
+            <input type="text" class="box" id="mm">분
+            <input type="text" class="box" id="ss">초
+        </div>
+        <div id="footer">
+            <button onclick="flag = true">Start</button>
+            <button onclick="flag = false">Stop</button>
+            <button onclick="setCount()">수동</button>
+        </div>
+    </div>
+</body>
+</html>
