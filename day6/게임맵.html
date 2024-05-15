@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper {
+            margin: auto;
+            background-color: yellow;
+            position: relative;
+        }
+    </style>
+    <script>
+        let wrapper;
+
+        let map = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
+
+        //주인
+        function createItem(filename,y,x){
+                    console.log("주인공의 층수(y)는", y , "호수(x)", x);
+                    let brick = document.createElement("img");
+                    brick.src = "../images/mario/"+ filename;
+                    brick.style.position = "absolute";
+                    brick.style.left = x*50 + "px";
+                    brick.style.top = y*50 + "px";
+                    brick.style.width = 50 + "px";
+                    brick.style.height = 50 + "px";
+
+
+                    wrapper.appendChild(brick);
+
+        }
+        //마리오가 밟고 다닐 벽돌
+        function createMap() {
+            for (let a = 0; a<map.length; a++) {//층수
+                for (let i = 0; i < map[a].length; i++) {//호수
+                    switch(map[a][i]){ // 1~5사이의 숫자가 발견될때만 이미지 생성
+                        case 1:createItem("Mario.webp" , a, i); break;
+                        case 2:createItem("brick1.webp" , a, i); break;
+                        case 3:createItem("brick2.webp" , a, i); break;
+                        case 4:createItem("Mushroom.webp" , a, i); break;
+                        case 5:createItem("shell.webp" , a, i); break;
+                    }
+                }
+            }
+        }
+
+        function init() {
+            wrapper = document.getElementById("wrapper");
+            wrapper.style.width = map[0].length * 50 + "px";
+            wrapper.style.height = map.length * 50 + "px"
+            createMap();
+        }
+
+        addEventListener("load", function () {
+            init();
+        });
+    </script>
+</head>
+
+<body>
+    <div id="wrapper"></div>
+</body>
+
+</html>

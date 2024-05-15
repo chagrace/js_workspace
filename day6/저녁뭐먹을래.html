@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <script src="../js/lib.js"></script>
+    <script>
+
+    
+        function regist(){
+            let dinner;
+            dinner = new Array("롯데리아","버거킹");
+            document.write(dinner[getRandom(dinner.length-1)]);
+        }
+        addEventListener("load", function(){
+            let wrapper = document.getElementById("wrapper");
+            
+            document.getElementById("btn").addEventListener("click", function(){
+                regist();
+            });
+
+            
+        });
+    
+    
+    </script>
+<body>
+    <div id="wrapper">
+        <button id="btn">클릭</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./Cannon.js"></script>
+    <script>
+        let cannon;
+        let bulletArray=[];
+
+        function init(){
+            //대포의 위치 잡기
+            cannon.style.position="absolute";
+            cannon.style.top = 200 + "px";
+            cannon.style.left = 0 + "px";
+        }
+        function fire(){
+            let x = parseInt(cannon.style.left);
+            let y = parseInt(cannon.style.top);
+
+            let bullet = new Cannon("../images/cannon/b2.webp", x+35, y+1, 40, 40,5,0);
+
+            //태어난 총알을 배열에 추가
+            bulletArray.push(bullet);
+        }
+
+        function gameLoop(){
+            for(let i=0; i<bulletArray.length; i++){
+                bulletArray[i].move();
+
+            }
+        }
+        addEventListener("load", function(){
+            cannon = document.getElementById("cannon");
+            init();
+
+            //body에 키보드 이벤트 연결
+            //addEventListener() 메서드의 두번째 매개변수인 익명함수는
+            // 매개변수를 보유할 수 있고, 이때 이 매개변수로 전달되어져 오는 객체가 바로 event 객체이다.
+            document.body.addEventListener("keydown", function(e){
+                //e는 이벤트 객체이다
+                if(e.keyCode == 32){
+                    fire();
+                }
+                console.log("키 눌렀어?");
+            });
+            setInterval("gameLoop()", 10);
+        });
+    </script>
+</head>
+<body>
+    <select id="sel">
+        <option>폭탄 선택</option>
+        <option value="b1.webp">폭탄1</option>
+        <option value="b2.webp">폭탄2</option>
+        <option value="b3.webp">폭탄3</option>
+    </select>
+    <p></p>
+    <img src="../images/cannon/cannon.webp" id="cannon">
+</body>
+</html>
